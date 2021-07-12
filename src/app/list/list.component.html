@@ -1,0 +1,12 @@
+<p>list works!</p>
+
+<div class="list-todos incomplete">
+    <ul *ngFor="let todo of todos">
+        <button class="done" (click)="onDoneBtn(todo)">done</button>
+        <span class="todo-ist" (click)="onEdit(todo)">{{todo.text}}</span>
+        <button class="edit-btn" (click)="onEdit(todo)">Edit</button>
+
+        <button mat-raised-button class="deletBtn" (click)="onDelet(todo.id)">X</button>
+
+    </ul>
+</div>
