@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DataService } from './data.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogDeletComponent } from './dialog-delet/dialog-delet.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -35,7 +36,9 @@ import { DialogDeletComponent } from './dialog-delet/dialog-delet.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
+
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDeletComponent } from '../dialog-delet/dialog-delet.component';
+import { AddComponent } from '../add/add.component'
+import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -13,9 +16,21 @@ export class ListComponent implements OnInit {
   complete: any[] = [];
   deletConfirm: string = '';
 
+  editFormControlt = new FormGroup({
+    text: new FormControl(''),
+    date: new FormControl(),
+    select: new FormControl(''),
+
+
+  });
+
+
+
+
   constructor(
     private dataService: DataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -83,21 +98,37 @@ export class ListComponent implements OnInit {
   }
 
   onEdit(todo: any) {
-    console.log(todo);
+    let dialogRef = this.dialog.open(AddComponent,)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      console.log(todo);
+
+      this.editFormControlt = new FormGroup({
+        text: new FormControl(result['text']),
+        date: new FormControl(result['date']),
+        select: new FormControl(result['select'])
+      });
 
 
-    // this.appState = 'edit';
 
-    // this.text = todo.text;
-    // this.id = todo.id;
+    })
+
+
+
 
   }
 
 
-  // updateTodo() {
 
-  //   for (let i = 0; i < this.todos.length; i++) {
-  //     if (this.todos[i].id == this.id) {
+
+}
+
+
+  // updateTodo(editId: any) {
+
+
+  //for (let i = 0; i < this.todos.length; i++) {
+  //   if (this.todos[i].id == this.editId) {
   //       this.todos[i].text = this.text;
   //     }
   //   }
@@ -107,4 +138,4 @@ export class ListComponent implements OnInit {
   // }
 
 
-}
+

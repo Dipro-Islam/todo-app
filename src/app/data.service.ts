@@ -29,7 +29,7 @@ export class DataService {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
-  updatedTodo(todos: any) {
+  updateTodo(todos: any) {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 

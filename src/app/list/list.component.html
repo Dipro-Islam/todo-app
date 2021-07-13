@@ -1,12 +1,40 @@
-<p>list works!</p>
-
 <div class="list-todos incomplete">
-    <ul *ngFor="let todo of todos">
-        <button class="done" (click)="onDoneBtn(todo)">done</button>
-        <span class="todo-ist" (click)="onEdit(todo)">{{todo.text}}</span>
-        <button class="edit-btn" (click)="onEdit(todo)">Edit</button>
+    <table>
+        <tr>
+            <th>Complete</th>
+            <th>Event</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Edit</th>
+            <th>Delet</th>
+        </tr>
+        <tr *ngFor="let todo of todos">
+            <td> <button mat-raised-button class="done" (click)="onDoneBtn(todo)">done</button></td>
+            <td>
+                <div class="todoText">
+                    <span class="todo-ist" (click)="onEdit(todo)">{{todo.text}}</span>
+                </div>
+            </td>
+            <td> <button mat-raised-button class="edit-btn" (click)="onEdit(todo)">Edit</button></td>
+            <td><button mat-raised-button class="deletBtn" (click)="onDelet(todo.id)">X</button></td>
+        </tr>
+    </table>
 
-        <button mat-raised-button class="deletBtn" (click)="onDelet(todo.id)">X</button>
+</div>
 
-    </ul>
+<h1>Completed</h1>
+<div class="list-todos incomplete">
+    <table>
+        <tr *ngFor="let item of complete">
+
+            <td>
+                <div class="todoText">
+                    <span class="todo-ist">{{item.text}}</span>
+                </div>
+            </td>
+
+            <td><button mat-raised-button class="deletBtn" (click)="onDeletComplete(item.id)">X</button></td>
+        </tr>
+    </table>
+
 </div>

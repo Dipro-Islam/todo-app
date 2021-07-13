@@ -1,31 +1,33 @@
-<h3>Add New Todos</h3>
-<form [formGroup]="todoFormControlt">
+<div class="addBody">
+    <h3>Add New Todos</h3>
+    <form [formGroup]="todoFormControlt">
 
-    <div class="todo-form">
+        <div class="todo-form">
 
-        <input formControlName='text' type="text" name='text'>
-
-
-        <label>Choose a date</label> <br>
-        <input matInput [matDatepicker]="picker" formControlName='date'>
-        <!--  [min]="minDate" [max]="maxDate" (dateChange)="dateChange($event)" -->
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+            <input formControlName='text' type="text" name='text'>
 
 
-        <!-- Dropdown -->
-        <h4>Basic mat-select</h4>
-        <mat-form-field appearance="fill">
-            <mat-label>Ptiority</mat-label>
-            <mat-select formControlName='select'>
-                <mat-option value="high">High</mat-option>
-                <mat-option value="medium">Medium</mat-option>
-                <mat-option value="low">Low</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+            <label>Choose a date</label> <br>
+            <input matInput [matDatepicker]="picker" formControlName='date'>
+            <!--  [min]="minDate" [max]="maxDate" (dateChange)="dateChange($event)" -->
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
 
-    <br>
-    <button (click)="onSubmit()">Submit</button>
 
-</form>
+            <!-- Dropdown -->
+            <h4>Basic mat-select</h4>
+            <mat-form-field appearance="fill">
+                <mat-label>Ptiority</mat-label>
+                <mat-select formControlName='select'>
+                    <mat-option value="high">High</mat-option>
+                    <mat-option value="medium">Medium</mat-option>
+                    <mat-option value="low">Low</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <br>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+
+    </form>
+</div>
