@@ -15,6 +15,9 @@
                     <span class="todo-ist" (click)="onEdit(todo)">{{todo.text}}</span>
                 </div>
             </td>
+
+            <td>{{todo.date | date}}</td>
+            <td>{{todo.select}}</td>
             <td> <button mat-raised-button class="edit-btn" (click)="onEdit(todo)">Edit</button></td>
             <td><button mat-raised-button class="deletBtn" (click)="onDelet(todo.id)">X</button></td>
         </tr>

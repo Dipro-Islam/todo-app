@@ -98,23 +98,16 @@ export class ListComponent implements OnInit {
   }
 
   onEdit(todo: any) {
-    let dialogRef = this.dialog.open(AddComponent,)
+    let dialogRef = this.dialog.open(AddComponent, {
+      data: {
+        todoObject: todo,
+        updateVar: 'edit'
+      }
+    })
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      console.log(todo);
-
-      this.editFormControlt = new FormGroup({
-        text: new FormControl(result['text']),
-        date: new FormControl(result['date']),
-        select: new FormControl(result['select'])
-      });
-
-
 
     })
-
-
-
 
   }
 
