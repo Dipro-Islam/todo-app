@@ -13,11 +13,5 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) { }
 
-  popForm() {
-    let dialogRef = this.dialog.open(AddComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
 
-    })
-  }
 }

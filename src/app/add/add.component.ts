@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { DataService } from '../data.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -23,8 +23,7 @@ export class AddComponent implements OnInit {
 
   });
 
-
-  constructor(private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<AddComponent>) { }
 
   ngOnInit(): void {
     this.todos = this.dataService.getAllTodos();
@@ -77,10 +76,12 @@ export class AddComponent implements OnInit {
 
       this.todos.push(newTodo)
       this.dataService.addTodo(this.todos)
+      this.todos = this.dataService.getAllTodos();
+
 
     }
 
-
+    this.dialogRef.close();
 
   }
 

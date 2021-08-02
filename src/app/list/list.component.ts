@@ -5,6 +5,7 @@ import { DialogDeletComponent } from '../dialog-delet/dialog-delet.component';
 import { AddComponent } from '../add/add.component'
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Todo } from '../Todo';
 
 @Component({
   selector: 'app-list',
@@ -106,9 +107,18 @@ export class ListComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
+      this.todos = this.dataService.getAllTodos();
 
     })
 
+  }
+  popForm() {
+    let dialogRef = this.dialog.open(AddComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.todos = this.dataService.getAllTodos();
+      dialogRef.close();
+    })
   }
 
 
